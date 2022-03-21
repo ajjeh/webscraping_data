@@ -1,6 +1,11 @@
 from bs4 import BeautifulSoup
 import requests
-
+# 
+# Adding Features to the webscraping.
+# -Wraping the scraping program in a while loop.
+# -Executing the project every certain number of time.
+# -Apply filtrations.
+# 
 html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=USA').text
 
 # print(html_text)
