@@ -11,9 +11,11 @@ job_card = bsoup.find_all('li', class_='clearfix job-bx wht-shd-bx')
 for jobs in job_card:
     # print(job_card)
     # job_title = job_card.find('strong', class_='blkclor')
-    company_name = jobs.find('h3', class_='joblist-comp-name').text.replace(' ', '')
-    KeySkills = jobs.find('span', class_='srp-skills').text.replace(' ', '')
     publish_date = jobs.find('span', class_='sim-posted').span.text
+    if 'few' in publish_date: #if publish_date has a word 'few'.
+        company_name = jobs.find('h3', class_='joblist-comp-name').text.replace(' ', '')
+        KeySkills = jobs.find('span', class_='srp-skills').text.replace(' ', '')
+        publish_date = jobs.find('span', class_='sim-posted').span.text
 
     # print(job_title)
     # print(company_name)
