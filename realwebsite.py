@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=USA').text
+html_text = requests.get('https://en.wikipedia.org/wiki/List_of_largest_banks').text
 
 # print(html_text)
 bsoup = BeautifulSoup(html_text, 'lxml')
