@@ -1,34 +1,47 @@
+import imp
 from bs4 import BeautifulSoup
 import requests
-# 
+import time
+#
 # Adding Features to the webscraping.
 # -Wraping the scraping program in a while loop.
 # -Executing the project every certain number of time.
 # -Apply filtrations.
-# 
-html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=USA').text
+#
 
-# print(html_text)
-bsoup = BeautifulSoup(html_text, 'lxml')
+print('Enter some skills that you are familiar with:')
+unfamiliar_skills = input('>>>')
+print(f'Filtering out {unfamiliar_skills}')
 
-job_card = bsoup.find_all('li', class_='clearfix job-bx wht-shd-bx')
 
-for jobs in job_card:
-    # print(job_card)
-    # job_title = job_card.find('strong', class_='blkclor')
-    publish_date = jobs.find('span', class_='sim-posted').span.text
-    if 'few' in publish_date: #if publish_date has a word 'few'.
-        company_name = jobs.find('h3', class_='joblist-comp-name').text.replace(' ', '')
-        KeySkills = jobs.find('span', class_='srp-skills').text.replace(' ', '')
+def find_jobs():
+
+    html_text = requests.get('https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=USA').text
+
+    bsoup = BeautifulSoup(html_text, 'lxml')
+    job_card = bsoup.find_all('li', class_='clearfix job-bx wht-shd-bx')
+
+    for index, jobs in enumerate(job_card):
+
         publish_date = jobs.find('span', class_='sim-posted').span.text
+        # if publish_date has a word 'few'.
+        if 'few' in publish_date:  
+            company_name = jobs.find('h3', class_='joblist-comp-name').text.replace(' ', '')
+            KeySkills = jobs.find('span', class_='srp-skills').text.replace(' ', '')
+            job_link = jobs.header.h2.a['href']
 
-        # print(job_title)
-        # print(company_name)
-        # print(KeySkills)
+            if unfamiliar_skills not in KeySkills:
+                with open(f'jobs/{index}.txt', 'w') as f:
+                    f.write(f"Company Name: {company_name.strip()} \n")
+                    f.write(f"Required Skills: {KeySkills.strip()} \n")
+                    f.write(f"Job Link: {job_link} \n")
+
+                print(f'File saved: {index}')
 
 
-        print(f''' 
-            Company Name: {company_name} 
-            Required Skills: {KeySkills}''' )
-
-        print('')
+if __name__ == '__main__':
+    while True:
+        find_jobs()
+        time_wait = 10
+        print(f'Waiting for {time_wait} minutes...')
+        time.sleep(time_wait*60)
