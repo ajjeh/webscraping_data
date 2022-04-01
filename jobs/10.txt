@@ -1,0 +1,3 @@
+Company Name: NielsenResearchLtd.Co. 
+Required Skills: hive,orchestration,informationtechnology,softwaredesign,scala,sql,apache,git,linux,debugging,bigdata,vms,python,oozie,machinelearning,infrastructure 
+Job Link: https://www.timesjobs.com/job-detail/data-engineer-python-spark-aws-nielsen-research-ltd-co-chicago-5-to-8-yrs-jobid-oDKlJHy84BlzpSvf__PLUS__uAgZw==&source=srp 
