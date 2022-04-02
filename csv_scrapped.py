@@ -1,17 +1,10 @@
 from bs4 import BeautifulSoup
 import requests
 
+site_url = "https://deliveryhero.wd3.myworkdayjobs.com/en-US/talabat/jobs?Job_Application_ID=53615a17124a8101fed4234ac0970000"
 
-def scrap_job():
-
-    url = requests.get("https://coreyms.com/").text
-    # print(url)
-
-    bsp = BeautifulSoup(url, "lxml")
-    hd_tag = bsp.find('article')
-
-    print(hd_tag.prettify())
-
-
-
-scrap_job()
+with open(site_url, 'r') as site_file:
+    
+    sp = BeautifulSoup(site_file, 'lxml')
+    job_listings = sp.find('li', class_='WH5F WGQO WBAB WOAG')
+    
