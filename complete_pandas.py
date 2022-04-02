@@ -24,7 +24,7 @@ df.describe()
 # sorting values
 df.sort_values('Name', ascending=False) #by name in this case
 
-df.sort_values(['Type 1', 'HP'],, ascending=True) #multiple sorts
+df.sort_values(['Type 1', 'HP'], ascending=True) #multiple sorts
 
 #Making changes to the data.
 # adding a new column 'Total', Adding the mentioned columns.
