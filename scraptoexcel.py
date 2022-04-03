@@ -4,6 +4,8 @@ import requests
 import lxml
 import pandas as pd
 
+# Scrapping website content to an excel spreadsheet with headers.
+
 url = requests.get("https://www.timesjobs.com/candidate/job-search.html?searchType=personalizedSearch&from=submit&txtKeywords=python&txtLocation=USA").text
 
 # print(url)
