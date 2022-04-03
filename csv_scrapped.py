@@ -8,3 +8,7 @@ with open(site_url, 'r') as site_file:
     sp = BeautifulSoup(site_file, 'lxml')
     job_listings = sp.find('li', class_='WH5F WGQO WBAB WOAG')
     
+    print(job_listings)
+    
+#     job_title = job_listings.
+    
